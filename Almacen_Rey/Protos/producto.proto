@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option csharp_namespace = "Almacen_Rey";
+
+package productos;
+
+message Producto{
+	string id = 1;
+	string nombre = 2;
+	int32 cantidad = 3;
+}
+
+service Almacen{
+	rpc GetProducttById (ProductID) returns (Producto){}
+	rpc GetProducttByName (ProductName) returns (Producto){}
+	rpc AddProducttById (Producto) returns (ProductID){}
+	rpc UpdateProducttById (Producto) returns (Producto){}
+}
+
+message ProductID {
+	string id = 1;
+}
+
+message ProductName{
+	string nombre = 1;
+}
+
+message ErrorResponse {
+	string razon = 1;
+	repeated string detalle = 2;
+}
